@@ -22,7 +22,7 @@ function CreateUser() {
   const userCreate = async (event) => {
     event.preventDefault();
     await axios
-      .post("http://localhost:3000/api/createuser", user)
+      .post("/api/createuser", user)
       .then((response) => {
         const { data } = response;
         localStorage.setItem("userdata", JSON.stringify(data));
