@@ -1,11 +1,11 @@
-import { PrismaClient } from "@prisma/client";
-import axios from "axios";
 import { useState } from "react";
+
+import axios from "axios";
 
 // import { Container } from './styles';
 
 function createWord() {
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState({});
 
   const addUserObject = (e) => {
     setUser({ [e.target.name]: e.target.value });
@@ -13,8 +13,10 @@ function createWord() {
 
   const userCreate = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:3000/api/createword", user, {headers : {
-      userid : '62929eef63e0094fd5fb49f7'}
+    await axios.post("http://localhost:3000/api/createword", user, {
+      headers: {
+        userid: "62929eef63e0094fd5fb49f7",
+      },
     });
   };
   return (

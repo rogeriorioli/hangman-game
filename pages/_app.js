@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
     if (!ifuser) {
       router.push("/");
     }
-  }, []);
+  }, [router]);
   return (
     <>
       <Component {...pageProps} />

@@ -13,7 +13,7 @@ function CreateUser() {
       setUserExists(true);
       router.push("/game");
     }
-  }, []);
+  }, [router]);
 
   const addUserObject = (e) => {
     setUser({ [e.target.name]: e.target.value });
