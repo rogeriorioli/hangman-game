@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "./logo";
 import styled from "styled-components";
 
-function Header() {
+export default function Header() {
+  const [userData, setUserData] = useState();
+  useEffect(() => {
+    const userdata = localStorage.getItem("userdata");
+    setUserData(JSON.parse(userdata));
+  }, []);
+  console.log(userData);
   return (
     <HeaderContainer>
-      <div />
+      <div>{!userData ? "" : userData.userName}</div>
       <div>
         <Logo />
       </div>
@@ -13,8 +19,6 @@ function Header() {
     </HeaderContainer>
   );
 }
-
-export default Header;
 
 export const HeaderContainer = styled.header`
   display: flex;

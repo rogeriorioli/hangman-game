@@ -11,7 +11,8 @@ const Global = createGlobalStyle`
     background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
-    height: 100%;
+    height 100vh;
+    overflow: hidden;
   }
 
   a {

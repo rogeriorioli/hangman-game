@@ -1,30 +1,37 @@
 import { PrismaClient } from "@prisma/client";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
 import styled from "styled-components";
+import Header from "../../components/header";
 
-export default function index(props: { themes: any }) {
+export default function index(
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) {
   const { themes } = props;
   return (
-    <main>
-      <TitleContainer>
-        <h2>Escola um Tema</h2>
-      </TitleContainer>
-      <Container>
-        {themes.map((theme) => {
-          return (
-            <Link key={theme.id} href={`game/${theme.themeName}`}>
-              <LinkContainer>
-                <p>🍀</p>
-                <a>
-                  <div>{theme.themeName}</div>
-                </a>
-              </LinkContainer>
-            </Link>
-          );
-        })}
-      </Container>
-    </main>
+    <>
+      <Header />
+
+      <main>
+        <TitleContainer>
+          <h2>Escola um Tema</h2>
+        </TitleContainer>
+        <Container>
+          {themes.map((theme) => {
+            return (
+              <Link key={theme.id} href={`game/${theme.themeName}`}>
+                <LinkContainer>
+                  <p>🍀</p>
+                  <a>
+                    <div>{theme.themeName}</div>
+                  </a>
+                </LinkContainer>
+              </Link>
+            );
+          })}
+        </Container>
+      </main>
+    </>
   );
 }
 
